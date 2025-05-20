@@ -1,0 +1,154 @@
+/* Modern CSS Effects with FullPage.js integration */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic customization of fullpage.js */
+.fp-watermark {
+  display: none !important;
+}
+
+.fp-warning, .fp-watermark a {
+  display: none !important;
+}
+
+#fp-nav ul li a span {
+  background: #FF0000 !important;
+}
+
+.fp-tooltip {
+  color: #FF0000 !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Holographic effect */
+@keyframes hologram-flicker {
+  0% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 2px rgba(0, 195, 255, 0.5));
+  }
+  5% {
+    opacity: 0.9;
+    filter: brightness(1.2) drop-shadow(0 0 4px rgba(0, 195, 255, 0.7));
+  }
+  10% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 2px rgba(0, 195, 255, 0.5));
+  }
+  15% {
+    opacity: 0.95;
+    filter: brightness(1.1) drop-shadow(0 0 3px rgba(0, 195, 255, 0.6));
+  }
+  25% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 2px rgba(0, 195, 255, 0.5));
+  }
+  50% {
+    opacity: 0.97;
+    filter: brightness(1.05) drop-shadow(0 0 3px rgba(0, 195, 255, 0.5));
+  }
+  80% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 2px rgba(0, 195, 255, 0.5));
+  }
+  90% {
+    opacity: 0.9;
+    filter: brightness(1.15) drop-shadow(0 0 4px rgba(0, 195, 255, 0.7));
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 2px rgba(0, 195, 255, 0.5));
+  }
+}
+
+/* Scan lines animation */
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 9;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.scan-lines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: scanline 6s linear infinite;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent 50%,
+    rgba(255, 0, 0, 0.2) 50%,
+    rgba(255, 0, 0, 0.4),
+    transparent 55%
+  );
+  background-size: 100% 100vh;
+  z-index: 10;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Screen noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Perspective container for 3D effects */
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* FullPage.js section specific styles */
+.section {
+  overflow: hidden;
+  position: relative;
+}
+
+.section-content {
+  position: relative;
+  z-index: 5;
+}
+
+/* Drop effect animation styles (for fullPage.js integration) */
+.drop-up {
+  transform: translateY(-50px) !important;
+  opacity: 0 !important;
+  transition: transform 0.8s ease, opacity 0.8s ease !important;
+}
+
+.drop-down {
+  transform: translateY(50px) !important;
+  opacity: 0 !important;
+  transition: transform 0.8s ease, opacity 0.8s ease !important;
+}
